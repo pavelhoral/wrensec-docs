@@ -818,7 +818,7 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
  *     A description of the situation under which this exception 
  *     is thrown.
  */
-public int method(String p1) throws SomeException { ... }
+public int method(String p1) throw SomeException { ... }
 ```
 
 ... or in this single-line example:
