@@ -823,12 +823,10 @@ public class MyClass {
 // bad -- suppresses  unchecked conversion warnings for the whole class
 @SuppressWarnings("unchecked")
 public class MyClass {
-  @SuppressWarnings("unchecked")
   public <T> T asSubtype(final Object object, final Class<T> type) {
     return (T)object;
   }
 
-  @SuppressWarnings("unchecked")
   public <T extends MyClass> T asSubtype(final MyClass object, final Class<T> type) {
     return (T)object;
   }
