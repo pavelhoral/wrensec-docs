@@ -761,3 +761,103 @@ Other classes and members may have Javadoc _as needed or desired_.
 Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment must be written as Javadoc instead (using `/**`).
 
 Non-required Javadoc is not strictly required to follow the formatting rules of Sections 7.1.2, 7.1.3, and 7.2, though it is of course recommended.
+
+## 8 Policies
+> **Deviation Note:** This section of the style guide was adapted from Google's JavaScript Style Guide; no such section is present in Google's Java Style Guide. 
+
+### 8.1 Issues unspecified by Wren Style: be consistent!
+For any style question that isn't settled definitively by this specification, prefer to do what the other code in the same file is already doing. If that doesn't resolve the question, consider emulating the other files in the same package.
+
+### 8.2 Compiler warnings
+#### 8.2.1 Do not suppress the standard warning set
+As far as possible, projects should not suppress the built-in warnings of Maven or the Java compiler.
+
+#### 8.2.2 Do not work around Javadoc (JDK 8+) errors
+Javadocs that do not compile with the more restrictive setting of the Java 8 `javadoc` tool should be corrected.
+
+#### 8.2.3 How to handle a warning
+Before doing anything, make sure you understand exactly what the warning is telling you. If you're not positive why a warning is appearing, you should ask the Wren Security team for help or file an issue with us.
+
+Once you understand the warning, attempt the following solutions in order:
+
+1.  **First, fix it or work around it.** Make a strong attempt to actually address the warning, or find another way to accomplish the task that avoids the situation entirely.
+2.  **Otherwise, determine if it's a false alarm.** If you are convinced that the warning is invalid and that the code is actually safe and correct, add a comment to convince the reader of this fact and apply the `@SuppressWarnings` annotation.
+3.  **Otherwise, leave a TODO comment and file a ticket.** This is a **last resort**. If you do this, **do not suppress the warning.** The warning should be visible until it can be taken care of properly.
+
+#### 8.2.3 Suppress a warning at the narrowest reasonable scope
+Warnings are suppressed at the narrowest reasonable scope, usually that of a single local variable or very small method. Often a variable or method is extracted for that reason alone.
+
+Examples:
+
+```Java
+public class MyClass {
+  // good -- suppresses only the unchecked conversion warning, and only for this method
+  @SuppressWarnings("unchecked")
+  public <T> T asSubtype(final Object object, final Class<T> type) {
+    return (T)object;
+  }
+
+  // good -- suppresses only the unchecked conversion warning, and only for this method
+  @SuppressWarnings("unchecked")
+  public <T extends MyClass> T asSubtype(final MyClass object, final Class<T> type) {
+    return (T)object;
+  }
+}
+```
+```Java
+public class MyClass {
+  // bad -- suppresses warnings of all types
+  @SuppressWarnings("all")
+  public <T> T asSubtype(final Object object, final Class<T> type) {
+    return (T)object;
+  }
+
+  // bad -- suppresses warnings of all types
+  @SuppressWarnings("all")
+  public <T extends MyClass> T asSubtype(final MyClass object, final Class<T> type) {
+    return (T)object;
+  }
+}
+```
+```Java
+// bad -- suppresses  unchecked conversion warnings for the whole class
+@SuppressWarnings("unchecked")
+public class MyClass {
+  @SuppressWarnings("unchecked")
+  public <T> T asSubtype(final Object object, final Class<T> type) {
+    return (T)object;
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T extends MyClass> T asSubtype(final MyClass object, final Class<T> type) {
+    return (T)object;
+  }
+}
+```
+
+Even a large number of suppressions in a class is still better than blinding the entire class to this type of warning.
+
+### 8.3 Deprecation
+Deprecated methods, classes, or interfaces must be marked with `@Deprecated` annotations. Such elements must be accompanied by a Javadoc that includes a Javadoc `@deprecated` tag that includes simple, clear directions for the preferred replacement for the deprecated functionality.
+
+### 8.4 Code not in Wren Style
+You will occasionally encounter files in our codebase that is not in proper Wren Style. Typically, this is either legacy code that Wren inherited from ForgeRock, or code that was contributed to our project before Wren Style took a position on some issue.
+
+#### 8.4.1 Reformatting existing code
+When updating the style of existing code, follow these guidelines.
+
+1. It is not required to change all existing code to meet current style guidelines. Reformatting existing code is a trade-off between code churn and consistency. Style rules evolve over time and these kinds of tweaks to maintain compliance would create unnecessary churn. However, if significant changes are being made to a file, the resulting file should be in Wren Style.
+2. When making style-only changes as part of a larger change, the changes should be committed separately from logic or functionality changes, to make it easier for maintainers to understand your functionality changes without getting lost in style.
+3. Be careful not to allow opportunistic style fixes to muddle the focus of a Pull Request. If you find yourself making a lot of style changes that are not critical to the central focus of a Pull Request, promote those changes to a separate Pull Request.
+
+#### 8.4.2 Newly added code: use Wren Style
+New files must use Wren Style, regardless of the style choices of other files in the same package.
+
+When adding new code to a file that is not in Wren Style, reformatting the existing code first should be considered, subject to the advice in [Reformatting existing code](#841-reformatting-existing-code).
+
+If this reformatting is not done, then new code should be as consistent as possible with existing code in the same file, but must not violate this style guide.
+
+### 8.5 Generated code: mostly exempt
+Source code generated by the build process is not required to be in Wren Style. However, any generated identifiers that will be referenced from hand-written source code must follow the naming requirements. As a special exception, such identifiers are allowed to contain underscores, which may help to avoid conflicts with hand-written identifiers.
+
+When writing a code generator, it should generate code that complies with this style guide whenever possible to enhance readability and maintainability.
