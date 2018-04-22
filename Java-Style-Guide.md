@@ -814,7 +814,7 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
  *     A description of the return value for this method, which
  *     may indicate whether or not the result can be {@code null}.
  *
- * @throws IOException
+ * @throws SomeException
  *     A description of the situation under which this exception 
  *     is thrown.
  */
