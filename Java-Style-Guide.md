@@ -1,8 +1,8 @@
-Based on the Google Java Style Guide, licensed under the [CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/). 
+Based on Google's [Java Style Guide](https://google.github.io/styleguide/javaguide.html) and [JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), both of which are licensed under the [CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/). 
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/3.0/88x31.png)](https://creativecommons.org/licenses/by/3.0/)
 
-Deviations from / additions to Google's style guide are noted in context.
+Deviations from / additions to Google's style guide are noted with "Deviation Notes" in context.
 
 ## 1. Introduction
 This document serves as the **complete** definition of Wren Security's coding standards for source code in the Java&trade; Programming Language. A Java source file is described as being _in Wren Style_ if and only if it adheres to the rules herein.
@@ -15,31 +15,34 @@ In this document, unless otherwise clarified:
 1.  The term _class_ is used inclusively to mean an "ordinary" class, enum class, interface or annotation type (`@interface`).
 2.  The term _member_ (of a class) is used inclusively to mean a nested class, field, method, _or constructor_; that is, all top-level contents of a class except initializers and comments.
 3.  The term _comment_ always refers to _implementation_ comments. We do not use the phrase "documentation comments", instead using the common term "Javadoc."
+4.  This Style Guide uses [RFC 2119](http://tools.ietf.org/html/rfc2119) terminology when using the phrases _must_, _must not_, _should_, _should not_, and _may_. The terms _prefer_ and _avoid_ correspond to _should_ and _should not_, respectively. Imperative and declarative statements are prescriptive and correspond to _must_.
 
 Other "terminology notes" will appear occasionally throughout the document.
+
+> **Deviation Note:** This style guide has been modified to follow RFC 2119, just like Google's JavaScript style guide. Google's original Java Style Guide does not follow RFC 2119.
 
 ### 1.2 Guide notes
 Example code in this document is **non-normative**. That is, while the examples are in Wren Style, they may not illustrate the _only_ stylish way to represent the code. Optional formatting choices made in examples should not be enforced as rules.
 
 ## 2. Source file basics
 ### 2.1 File name
-The source file name consists of the case-sensitive name of the top-level class it contains (of which there is [exactly one](#341-exactly-one-top-level-class-declaration)), plus the `.java` extension.
+The source file name must consist of the case-sensitive name of the top-level class it contains (of which there is [exactly one](#341-exactly-one-top-level-class-declaration)), plus the `.java` extension.
 
 ### 2.2 File encoding: UTF-8
-Source files are encoded in **UTF-8**.
+Source files must be encoded in **UTF-8**.
 
 ### 2.3 Special characters
 #### 2.3.1 Whitespace characters
-Aside from the line terminator sequence, the **ASCII horizontal space character** (**0x20**) is the only whitespace character that appears anywhere in a source file. This implies that:
+Aside from the line terminator sequence, the **ASCII horizontal space character** (**0x20**) must be the only whitespace character that appears anywhere in a source file. This implies that:
 
 1.  All other whitespace characters in string and character literals are escaped.
 2.  Tab characters are **not** used for indentation.
 
 #### 2.3.2 Special escape sequences
-For any character that has a [special escape sequence](http://docs.oracle.com/javase/tutorial/java/data/characters.html) (`\b`, `\t`, `\n`, `\f`, `\r`, `\"`, `\'` and `\\`), that sequence is used rather than the corresponding octal (e.g. `\012`) or Unicode (e.g. `\u000a`) escape.
+For any character that has a [special escape sequence](http://docs.oracle.com/javase/tutorial/java/data/characters.html) (`\b`, `\t`, `\n`, `\f`, `\r`, `\"`, `\'` and `\\`), that sequence must be used rather than the corresponding octal (e.g. `\012`) or Unicode (e.g. `\u000a`) escape.
 
 #### 2.3.3 Non-ASCII characters
-For the remaining non-ASCII characters, either the actual Unicode character (e.g. `∞`) or the equivalent Unicode escape (e.g. `\u221e`) is used. The choice depends only on which makes the code **easier to read and understand**, although Unicode escapes outside string literals and comments are strongly discouraged.
+For the remaining non-ASCII characters, either the actual Unicode character (e.g. `∞`) or the equivalent Unicode escape (e.g. `\u221e`) must be used. The choice depends only on which makes the code **easier to read and understand**, although Unicode escapes outside string literals and comments are strongly discouraged.
 
 > **Tip:** In the Unicode escape case, and occasionally even when actual Unicode characters are used, an explanatory comment can be very helpful.
 
@@ -56,7 +59,7 @@ Examples:
 > **Tip:** Never make your code less readable simply out of fear that some programs might not handle non-ASCII characters properly. If that should happen, those programs are **broken** and they must be **fixed**.
 
 ## 3. Source file structure
-A source file consists of, **in order**:
+A source file must consist of, **in order**:
 
 1. License and copyright information
 2. Package statement
@@ -92,68 +95,69 @@ All new Java source files added to Wren Security projects must have a CDDL licen
  */
 ```
 
-The copyright line of a new source file should read "Copyright YEAR Wren Security. All rights reserved." YEAR must indicate the year that the file was first created.
+The copyright line of a new source file should read "Copyright YEAR Wren Security. All rights reserved." `YEAR` must indicate the year that the file was first created.
 
 #### 3.1.2 Header Modifications in Existing Files
 To ensure compliance with the CDDL license, contributors must adhere to the following guidelines:
 - Never remove a copyright line. Ever. No matter how small the original contribution was, the owner of the contribution must be acknowledged.
 
-- Older source files may have a CDDL header of a slightly different format than that shown above in [section 3.1.1](#311-new-files). It is acceptable to update the format of the header in these files to match the new format, but *the copyright notices in the header &ndash; including the years of effect and name of each copyright owner &ndash; must be preserved.*.
+- Older source files may have a CDDL header of a slightly different format than that shown above in [section 3.1.1](#311-new-files). You may update the format of the header in these files to match the new format, but *the copyright notices in the header &ndash; including the years of effect and name of each copyright owner &ndash; must be preserved.*.
 
-- Formatting changes to copright lines &ndash; even to make those lines consistent with the style of other lines in the same file or other files &ndash; are discouraged, unless the party making the formatting change claims ownership of the affected copyright notice (e.g. Wren Security can change the formatting of our own copyright lines, but should not change the formatting of ForgeRock copyright lines).
+- Formatting changes to copyright lines &ndash; even to make those lines consistent with the style of other lines in the same file or other files &ndash; are discouraged and should not be made, unless the party making the formatting change claims ownership of the affected copyright notice (e.g. Wren Security can change the formatting of our own copyright lines, but should not change the formatting of ForgeRock copyright lines).
 
 - When modifying a source file, the line "Portions Copyright YEAR Wren Security." should be added below other copyright lines &ndash; unless a similar line already  exists, in which case it should be updated. YEAR must indicate the years of the contributions. For example, if the source file was first modified in 2017 and then again in 2019, the line should read "Portions Copyright 2017-2019 Wren Security."
 
 #### 3.1.3 Substantial Contributions from a Third Party
-Third-party organizations who are contributing a new feature and/or re-factoring an existing feature are entitled to use a CDDL copyright line that credits their own organization instead of the Wren Security organization, so long as the changes being contributed span three or more source files. Otherwise, single-file contributions should credit Wren Security as the copyright owner.
+Third-party organizations who are contributing a new feature and/or re-factoring an existing feature may use a CDDL copyright line that credits their own organization instead of the Wren Security organization, so long as the changes being contributed span three or more source files. Otherwise, single-file contributions should credit Wren Security as the copyright owner.
 
 This guideline helps to ensure that copyright headers do not become burdened with dozens of copyright claims for seemingly-minor changes.
 
 ### 3.2 Package statement
-The `package` statement is **not line-wrapped**. The column limit (Section 4.4, [Column limit: 120](#44-column-limit-100-encouraged-and-no-more-than-120)) does not apply to `package` statements.
+The `package` statement **must not be line-wrapped**. The column limit (Section 4.4, [Column limit: 120](#44-column-limit-100-encouraged-and-no-more-than-120)) does not apply to `package` statements.
 
 ### 3.3 Import statements
 #### 3.3.1 No wildcard imports
-
-**Wildcard imports**, static or otherwise, **are not used**.
+**Wildcard imports**, static or otherwise, **must not be used**.
 
 #### 3.3.2 No line-wrapping
-Import statements are **not line-wrapped**. The column limit (Section 4.4, [Column limit: 120](#44-column-limit-100-encouraged-and-no-more-than-120)) does not apply to `import` statements.
+Import statements **must not be line-wrapped**. The column limit (Section 4.4, [Column limit: 120](#44-column-limit-100-encouraged-and-no-more-than-120)) does not apply to `import` statements.
 
 #### 3.3.3 Ordering and spacing
-Imports are ordered as follows:
+Imports must be ordered as follows:
 
 1. All static imports in a single block.
 2. All non-static imports in a single block.
 
-If there are both static and non-static imports, a single blank line separates the two blocks. There are no other blank lines between import statements.
+If there are both static and non-static imports, a single blank line must separate the two blocks. There must be no other blank lines between import statements.
 
-Within each block the imported names appear in ASCII sort order. (**Note:** this is not the same as the import _statements_ being in ASCII sort order, since '.' sorts before ';'.)
+Within each block the imported names must appear in ASCII sort order. (**Note:** this is not the same as the import _statements_ being in ASCII sort order, since '.' sorts before ';'.) (This reduces the incidence of merge conflicts in import statements).
+
+> **Deviation Note:** This section of the style guide has additional clarifications not present in Google's Java Style Guide.
 
 #### 3.3.4 No static import for classes
-Static import is not used for static nested classes. They are imported with normal imports.
+Static import must not be used for static nested classes. They must be imported with normal imports.
 
 ### 3.4 Class declaration
 #### 3.4.1 Exactly one top-level class declaration
-Each top-level class resides in a source file of its own.
+Each top-level class must reside in a source file of its own.
 
 #### 3.4.2 Ordering of class contents
 The order you choose for the members and initializers of your class can have a great effect on learnability. However, there's no single correct recipe for how to do it; different classes may order their contents in different ways.
 
-What is important is that each class uses **_some_ logical order**, which its maintainer could explain if asked. For example, new methods are not just habitually added to the end of the class, as that would yield "chronological by date added" ordering, which is not a logical ordering.
+What is important is that each class should use **_some_ logical order**, which its maintainer could explain if asked. For example, new methods are not just habitually added to the end of the class, as that would yield "chronological by date added" ordering, which is not a logical ordering.
 
 ##### 3.4.2.1 Overloads: never split
-When a class has multiple constructors, or multiple methods with the same name, these appear sequentially, with no other code in between (not even private members).
+When a class has multiple constructors, or multiple methods with the same name, these must appear sequentially, with no other code in between (not even private members).
 
 ## 4. Formatting
 > **Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. Note that, by Section 4.8.3.1 on [array initializers](#4831-array-initializers-can-be-block-like), any array initializer _may_ optionally be treated as if it were a block-like construct.
 
 ### 4.1 Braces
 #### 4.1.1 Braces are used, even where optional
-Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
+Braces must be used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
 
 #### 4.1.2 Nonempty blocks: K & R style
-Braces follow the Kernighan and Ritchie style ("[Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)") for _nonempty_ blocks and block-like constructs:
+Braces must follow the Kernighan and Ritchie style ("[Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)") for _nonempty_ blocks and block-like constructs:
 
 * No line break before the opening brace.
 * Line break after the opening brace.
@@ -212,15 +216,15 @@ Examples:
 ```
   
 ### 4.2 Block indentation: +4 spaces
-Each time a new block or block-like construct is opened, the indent increases by four spaces. When the block ends, the indent returns to the previous indent level. The indent level applies to both code and comments throughout the block. (See the example in Section 4.1.2, [Nonempty blocks: K & R Style](#412-nonempty-blocks-k--r-style).)
+Each time a new block or block-like construct is opened, the indent must increase by four spaces. When the block ends, the indent must return to the previous indent level. The indent level must apply to both code and comments throughout the block. (See the example in Section 4.1.2, [Nonempty blocks: K & R Style](#412-nonempty-blocks-k--r-style).)
 
 > **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, four spaces instead of two spaces are used for indentation. This is to maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock.
 
 ### 4.3 One statement per line
-Each statement is followed by a line break.
+Each statement must be followed by a line break.
 
 ### 4.4 Column limit: 100 encouraged, and no more than 120
-Where possible, Java code should strive for a column limit of 100 characters, and must not exceed 120 characters. A column limit is important, regardless of the fact that more and more developers have wider screen monitors &ndash; capable of 160, 240, or even 320+ characters of text on screen at a single time. Consider that contributions to Wren Security projects typically are submitted through GitHub pull requests, to be reviewed and quality checked by project maintainers. Without a character limit, it is cumbersome and error-prone for reviewers to examine differences in source files that don't fit on-screen, side-by-side, on a modern laptop screen. No one wants a security defect to slip in and go unnoticed as a result of an easily-correctable formatting issue.
+Where possible, Java code should strive for a column limit of 100 characters, and must not exceed 120 characters. A column limit is important, regardless of the fact that modern developers have wider screen monitors capable of 160, 240, or even 320+ characters of text on screen at a single time. Consider that contributions to Wren Security projects typically are submitted through GitHub pull requests, to be reviewed and quality checked by project maintainers. Without a character limit, it is cumbersome and error-prone for reviewers to examine differences in source files that don't fit on-screen, side-by-side, on a modern laptop screen. No one wants a security defect to slip in and go unnoticed as a result of an easily-correctable formatting issue.
 
 A "character" means any Unicode code point. Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in Section 4.5, [Line-wrapping](#45-line-wrapping).
 
@@ -245,17 +249,17 @@ There is no comprehensive, deterministic formula showing _exactly_ how to line-w
 #### 4.5.1 Where to break
 The prime directive of line-wrapping is: prefer to break at a **higher syntactic level**. Also:
 
-1. When a line is broken at a _non-assignment_ operator the break comes _before_ the symbol.
+1. When a line is broken at a _non-assignment_ operator the break must come _before_ the symbol.
     * This also applies to the following "operator-like" symbols:
         * the dot separator (`.`)
         * the two colons of a method reference (`::`)
         * an ampersand in a type bound (`<T extends Foo & Bar>`)
         * a pipe in a catch block (`catch (FooException | BarException e)`).
-2. When a line is broken at an _assignment_ operator the break typically comes _after_ the symbol, but either way is acceptable.
+2. When a line is broken at an _assignment_ operator the break may typically come _after_ the symbol, but either way is acceptable.
     *   This also applies to the "assignment-operator-like" colon in an enhanced `for` ("foreach") statement.
-3. A method or constructor name stays attached to the open parenthesis (`(`) that follows it.
-4. A comma (`,`) stays attached to the token that precedes it.
-5. A line is never broken adjacent to the arrow in a lambda, except that a break may come immediately after the arrow if the body of the lambda consists of a single unbraced expression. Examples:
+3. A method or constructor name must stay attached to the open parenthesis (`(`) that follows it.
+4. A comma (`,`) must stay attached to the token that precedes it.
+5. A line must never be broken adjacent to the arrow in a lambda, except that a break may come immediately after the arrow if the body of the lambda consists of a single un-braced expression. Examples:
 ```Java    
     MyLambda<String, Long, Object> lambda =
         (String label, Long value, Object obj) -> {
@@ -269,15 +273,17 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
 > **Note:** The primary goal for line wrapping is to have clear code, _not necessarily_ code that fits in the smallest number of lines.
 
 #### 4.5.2 Indent continuation lines at least +4 spaces
-When line-wrapping, each line after the first (each _continuation line_) is indented at least +4 from the original line.
+When line-wrapping, each line after the first (each _continuation line_) must be indented at least +4 from the original line.
 
-When there are multiple continuation lines, indentation may be varied beyond +4 as desired. In general, two continuation lines use the same indentation level if and only if they begin with syntactically parallel elements.
+When there are multiple continuation lines, indentation may be varied beyond +4 as desired. In general, two continuation lines may use the _same_ indentation level _if and only if_ they begin with syntactically parallel elements.
 
-Section 4.6.3 on [Horizontal alignment](#463-horizontal-alignment-never-required) addresses the discouraged practice of using a variable number of spaces to align certain tokens with previous lines.
+Section 4.6.3 on [Horizontal alignment](#463-horizontal-alignment-never-required) addresses the discouraged (but acceptable) practice of using a variable number of spaces to align certain tokens with previous lines.
+
+> **Deviation Note:** This section of the style guide has additional clarifications not present in Google's Java Style Guide.
 
 ### 4.6 Whitespace
 #### 4.6.1 Vertical Whitespace
-A single blank line appears:
+A single blank line must appear:
 
 1. _Between_ consecutive members or initializers of a class: fields, constructors, methods, nested classes, static initializers, and instance initializers.
     *   **Exception:** A blank line between two consecutive fields (having no other code between them) is optional. Such blank lines are used as needed to create _logical groupings_ of fields.
@@ -289,7 +295,7 @@ A single blank line appears:
 _Multiple_ consecutive blank lines are permitted, but never required (or encouraged).
 
 #### 4.6.2 Horizontal whitespace
-Beyond where required by the language or other style rules, and apart from literals, comments and Javadoc, a single ASCII space also appears in the following places **only**.
+Beyond where required by the language or other style rules, and apart from literals, comments and Javadoc, a single ASCII space must appear in the following places **only**.
 
 1. Separating any reserved word, such as `if`, `for` or `catch`, from an open parenthesis (`(`) that follows it on that line
 2. Separating any reserved word, such as `else` or `catch`, from a closing curly brace (`}`) that precedes it on that line
@@ -311,7 +317,7 @@ Beyond where required by the language or other style rules, and apart from liter
 8. _Optional_ just inside both braces of an array initializer
     *   `new int[] {5, 6}` and `new int[] { 5, 6 }` are both valid
 
-This rule is never interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
+This rule is must not be interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
 
 > **Deviation Note:** This section of the style guide provides additional, minor clarifications but no substantial differences, when compared to Google's Java Style Guide. 
 
@@ -335,11 +341,11 @@ private Color color;  // may leave it unaligned
 > **Tip:** Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is **allowed**. More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. That one-line change now has a "blast radius." This can at worst result in pointless busywork, but at best it still corrupts version history information, slows down reviewers and exacerbates merge conflicts.
 
 ### 4.7 Grouping parentheses: recommended
-Optional grouping parentheses are omitted only when author and reviewer agree that there is no reasonable chance the code will be misinterpreted without them, nor would they have made the code easier to read. It is _not_ reasonable to assume that every reader has the entire Java operator precedence table memorized.
+Optional grouping parentheses may only be omitted when author and reviewer agree that there is no reasonable chance the code will be misinterpreted without them, nor would they have made the code easier to read. It is _not_ reasonable to assume that every reader has the entire Java operator precedence table memorized.
 
 ### 4.8 Specific constructs
 #### 4.8.1 Enum classes
-After each comma that follows an enum constant, a line break is optional. Additional blank lines (usually just one) are also allowed. This is one possibility:
+A line break may appear after each comma that follows an enum constant. Additional blank lines (usually just one) may also appear. This is one possibility:
 
 ```Java
 private enum Answer {
@@ -360,13 +366,13 @@ An enum class with no methods and no documentation on its constants may optional
 private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 ```
 
-Since enum classes _are classes_, all other rules for formatting classes apply.
+Since enum classes _are classes_, all other rules for formatting classes must apply.
 
 #### 4.8.2 Variable declarations
 ##### 4.8.2.1 One variable per declaration, per line
-Every variable declaration (field or local) declares only one variable on the same line: declarations such as `int a, b;` are not used.
+Every variable declaration (field or local) must declare only one variable on the same line: declarations such as `int a, b;` are not used.
 
-**Exceptions:** Multiple variable declarations are acceptable in the following circumstances: 
+**Exceptions:** Multiple variable may share the same declaration in the following circumstances: 
 - in the header of a `for` loop.
 - when the name of each variable is on its own line.
 
@@ -394,12 +400,12 @@ Examples:
     int x, y;
 ```
 
-> **Deviation Note:** This section of the style guide is more permissive than the same section in Google's Java Style Guide.
+> **Deviation Note:** This section of the style guide is more permissive than the same section in Google's Java Style Guide. Multiple variables can share the same definition if the variable names appear on separate lines.
 
 ##### 4.8.2.2 Declared when needed
-Local variables are **not** habitually declared at the start of their containing block or block-like construct. Instead, local variables are declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations typically have initializers, or are initialized immediately after declaration.
+Local variables must **not** be habitually declared at the start of their containing block or block-like construct. Instead, local variables should be declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations should have initializers, or should be initialized immediately after declaration.
 
-One shortcoming of declaring local variables as they are needed, rather than at the top of a block, is that it can lead to longer methods. Consider that when variables are declared at the top of a block, long methods would cause a developer to frequently have to scroll between the declaration of a variable and its use; that is not the case when variables are declared as they are needed. Nevertheless, strive to keep methods just as short and limited in complexity as you would if all variables _were_ declared at the start of the block.
+One shortcoming of declaring local variables as they are needed, rather than at the top of a block, is that it can lead to longer methods. Consider that when variables are declared at the top, long methods would cause a developer to frequently have to scroll between the declaration of a variable and its use; that is not the case when variables are declared as they are needed. Nevertheless, strive to keep methods just as short and limited in complexity as you would if all variables _were_ declared at the start of the block.
 
 > **Deviation Note:** This section of the style guide provides additional guidance about long methods than Google's Java Style Guide. 
 
@@ -435,7 +441,7 @@ new int[]
 ```
 
 ##### 4.8.3.2 No C-style array declarations
-The square brackets form a part of the _type_, not the variable: `String[] args`, not `String args[]`.
+The square brackets must form part of the _type_, not the variable name: `String[] args`, not `String args[]`.
 
 ##### 4.8.3.3 Trailing comma after last element of multi-line declaration
 When the elements of an array are split across multiple lines, the last element of the array should be followed by a trailing comma, to prevent parsing errors and reduce the size of diffs if another element is placed at the end of the array in a later revision of the source file.
@@ -446,12 +452,12 @@ When the elements of an array are split across multiple lines, the last element 
 **Terminology Note:** Inside the braces of a _switch block_ are one or more _statement groups_. Each statement group consists of one or more _switch labels_ (either `case FOO:` or `default:`), followed by one or more statements (or, for the _last_ statement group, _zero_ or more statements).
 
 ##### 4.8.4.1 Indentation
-As with any other block, the contents of a switch block are indented +2.
+As with any other block, the contents of a switch block must be indented +4 spaces.
 
-After a switch label, there is a line break, and the indentation level is increased +2, exactly as if a block were being opened. The following switch label returns to the previous indentation level, as if a block had been closed.
+After a switch label, there must be a line break, and the indentation level must be increased +4, exactly as if a block were being opened. The following switch label must return to the previous indentation level, as if a block had been closed.
 
 ##### 4.8.4.2 Fall-through: commented
-Within a `switch` block, each statement group either terminates abruptly (with a `break`, `continue`, `return` or thrown exception), or is marked with a comment to indicate that execution will or _might_ continue into the next statement group. Any comment that communicates the idea of fall-through is sufficient (typically `// fall through`). This special comment is not required in the last statement group of the switch block. 
+Within a `switch` block, each statement group must either terminate abruptly (with a `break`, `continue`, `return` or thrown exception), or must be marked with a comment to indicate that execution will or _might_ continue into the next statement group. Any comment that communicates the idea of fall-through is sufficient (typically `// fall through`). This special comment is not required in the last statement group of the switch block. 
 
 Example:
 ```Java
@@ -471,12 +477,12 @@ switch (input) {
 Notice that no comment is needed after `case 1:`, only at the end of the statement group.
 
 ##### 4.8.4.3 The `default` case is present
-Each switch statement includes a `default` statement group, even if it contains no code.
+Each switch statement must include a `default` statement group, even if it contains no code.
 
 **Exception:** A switch statement for an `enum` type _may_ omit the `default` statement group, _if_ it includes explicit cases covering _all_ possible values of that type. This enables IDEs or other static analysis tools to issue a warning if any cases were missed.
 
 #### 4.8.5 Annotations
-Annotations applying to a class, method or constructor appear immediately after the documentation block, and each annotation is listed on a line of its own (that is, one annotation per line). These line breaks do not constitute line-wrapping (Section 4.5, [Line-wrapping](#45-line-wrapping)), so the indentation level is not increased. Example:
+Annotations applying to a class, method or constructor must appear immediately after the documentation block, and each annotation must be listed on a line of its own (that is, one annotation per line). These line breaks do not constitute line-wrapping (Section 4.5, [Line-wrapping](#45-line-wrapping)), so the indentation level must not be increased. Example:
 
 ```Java
 @Override
@@ -490,7 +496,7 @@ public String getNameIfPresent() { ... }
 @Override public int hashCode() { ... }
 ```
 
-Annotations applying to a field also appear immediately after the documentation block, but in this case, _multiple_ annotations (possibly parameterized) may be listed on the same line; for example:
+Annotations applying to a field may also appear immediately after the documentation block, but in this case, _multiple_ annotations (possibly parameterized) may be listed on the same line; for example:
 
 ```Java
 @Partial @Mock DataLoader loader;
@@ -504,7 +510,7 @@ This section addresses _implementation comments_. Javadoc is addressed separatel
 Any line break may be preceded by arbitrary whitespace followed by an implementation comment. Such a comment renders the line non-blank.
 
 ##### 4.8.6.1 Block comment style
-Block comments are indented at the same level as the surrounding code. They may be in `/* ... */` style or `// ...` style. For multi-line `/* ... */` comments, subsequent lines must start with `*` aligned with the `*` on the previous line.
+Block comments must be indented at the same level as the surrounding code. They may be in `/* ... */` style or `// ...` style. For multi-line `/* ... */` comments, subsequent lines must start with `*` aligned with the `*` on the previous line.
 
 ```Java
 /*
@@ -523,49 +529,48 @@ Block comments are indented at the same level as the surrounding code. They may 
  * even do this */
 ```
 
-Comments are not enclosed in boxes drawn with asterisks or other characters.
+Comments must not be enclosed in boxes drawn with asterisks or other characters.
 
 **Tip:** When writing multi-line comments, use the `/* ... */` style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in `// ...` style comment blocks.
 
 #### 4.8.7 Modifiers
-Class and member modifiers, when present, appear in the order recommended by the Java Language Specification:
+Class and member modifiers, when present, must appear in the order recommended by the Java Language Specification:
 
 `public protected private abstract default static final transient volatile synchronized native strictfp`
 
 #### 4.8.8 Numeric Literals
-`long`-valued integer literals use an uppercase `L` suffix, never lowercase (to avoid confusion with the digit `1`). For example, `3000000000L` rather than `3000000000l`.
+`long`-valued integer literals must use an uppercase `L` suffix, never lowercase (to avoid confusion with the digit `1`). For example, `3000000000L` rather than `3000000000l`.
 
 ## 5. Naming
 ### 5.1 Rules common to all identifiers
+Identifiers must use only ASCII letters and digits, and, in a small number of cases noted below, underscores. Thus each valid identifier name is matched by the regular expression `\w+` .
 
-Identifiers use only ASCII letters and digits, and, in a small number of cases noted below, underscores. Thus each valid identifier name is matched by the regular expression `\w+` .
-
-In Wren Style, special prefixes or suffixes like those seen in the examples `_name`, `name_`, `mName`, `s_name` and `kName`, are **not** used. (This unused convention is sometimes referred to as "hungarian notation").
+In Wren Style, special prefixes or suffixes like those seen in the examples `_name`, `name_`, `mName`, `s_name` and `kName`, must **not** be used. (This unused convention is sometimes referred to as "hungarian notation").
 
 > **Deviation Note:** This section of the style guide provides additional clarification than the same section of Google's Java Style Guide. 
 
 ### 5.2 Rules by identifier type
 #### 5.2.1 Package names
-Package names are all lowercase, with consecutive words simply concatenated together (no underscores). For example, `com.example.deepspace`, not `com.example.deepSpace` or `com.example.deep_space`.
+Package names must be all lowercase, with consecutive words simply concatenated together (no underscores). For example, `com.example.deepspace`, not `com.example.deepSpace` or `com.example.deep_space`.
 
 #### 5.2.2 Class names
-Class names are written in [UpperCamelCase](#53-camel-case-defined).
+Class names must be written in [UpperCamelCase](#53-camel-case-defined).
 
-Class names are typically nouns or noun phrases. For example, `Character` or `ImmutableList`. Interface names may also be nouns or noun phrases (for example, `List`), but may sometimes be adjectives or adjective phrases instead (for example, `Readable`).
+Class names should typically be nouns or noun phrases. For example, `Character` or `ImmutableList`. Interface names may also be nouns or noun phrases (for example, `List`), but may sometimes be adjectives or adjective phrases instead (for example, `Readable`).
 
 There are no specific rules or even well-established conventions for naming annotation types.
 
-_Test_ classes are named starting with the name of the class they are testing, and ending with `Test`. For example, `HashTest` or `HashIntegrationTest`.
+_Test_ classes must be named starting with the name of the class they are testing, and ending with `Test`. For example, `HashTest` or `HashIntegrationTest`.
 
 #### 5.2.3 Method names
-Method names are written in [lowerCamelCase](#53-camel-case-defined).
+Method names must be written in [lowerCamelCase](#53-camel-case-defined).
 
-Method names are typically verbs or verb phrases. For example, `sendMessage` or `stop`.
+Method names should typically be verbs or verb phrases. For example, `sendMessage` or `stop`.
 
 Underscores may appear in JUnit _test_ method names to separate logical components of the name, with _each_ component written in [lowerCamelCase](#53-camel-case-defined). One typical pattern is `_<methodUnderTest>___<state>_`, for example `pop_emptyStack`. There is no One Correct Way to name test methods.
 
 #### 5.2.4 Constant names
-Constant names use `CONSTANT_CASE`: all uppercase letters, with each word separated from the next by a single underscore. But what _is_ a constant, exactly?
+Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated from the next by a single underscore. But what _is_ a constant, exactly?
 
 Constants are static final fields whose contents are deeply immutable and whose methods have no detectable side effects. This includes primitives, Strings, immutable types, and immutable collections of immutable types. If any of the instance's observable state can change, it is not a constant. Merely _intending_ to never mutate the object is not enough. Examples:
 
@@ -594,22 +599,22 @@ static final String\[\] nonEmptyArray = {"these", "can", "change"};
 These names are typically nouns or noun phrases.
 
 #### 5.2.5 Non-constant field names
-Non-constant field names (static or otherwise) are written in [lowerCamelCase](#53-camel-case-defined).
+Non-constant field names (static or otherwise) must be written in [lowerCamelCase](#53-camel-case-defined).
 
-These names are typically nouns or noun phrases. For example, `computedValues` or `index`.
+These names should typically be nouns or noun phrases. For example, `computedValues` or `index`.
 
 #### 5.2.6 Parameter names
-Parameter names are written in [lowerCamelCase](#53-camel-case-defined).
+Parameter names must be written in [lowerCamelCase](#53-camel-case-defined).
 
 One-character parameter names in public methods should be avoided.
 
 #### 5.2.7 Local variable names
-Local variable names are written in [lowerCamelCase](#53-camel-case-defined).
+Local variable names must be written in [lowerCamelCase](#53-camel-case-defined).
 
 Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
 
 #### 5.2.8 Type variable names
-Each type variable is named in one of two styles:
+Each type variable must be named in one of two styles:
 
 * A single capital letter, optionally followed by a single numeral (such as `E`, `T`, `X`, `T2`)
 * A name in the form used for classes (see Section 5.2.2, [Class names](#522-class-names)), followed by the capital letter `T` (examples: `RequestT`, `FooBarT`).
@@ -642,14 +647,14 @@ Note that the casing of the original words is almost entirely disregarded. Examp
 
 ## 6. Programming Practices
 ### 6.1 `@Override`: always used
-A method is marked with the `@Override` annotation whenever it is legal. This includes a class method overriding a superclass method, a class method implementing an interface method, and an interface method respecifying a superinterface method.
+A method must be marked with the `@Override` annotation whenever it is legal. This includes a class method overriding a superclass method, a class method implementing an interface method, and an interface method respecifying a superinterface method.
 
 **Exception:** `@Override` may be omitted when the parent method is `@Deprecated`.
 
 ### 6.2 Caught exceptions: not ignored
 Except as noted below, it is very rarely correct to do nothing in response to a caught exception. (Typical responses are to log it, or if it is considered "impossible", rethrow it as an `AssertionError`.)
 
-When it truly is appropriate to take no action whatsoever in a catch block, the reason this is justified is explained in a comment.
+When it truly is appropriate to take no action whatsoever in a catch block, the reason this is justified must be explained in a comment.
 
 ```Java
 try {
@@ -672,7 +677,7 @@ try {
 ```
 
 ### 6.3 Static members: qualified using class
-When a reference to a static class member must be qualified, it is qualified with that class's name, not with a reference or expression of that class's type.
+When a reference to a static class member must be qualified, it must be qualified with that class's name, not with a reference or expression of that class's type.
 
 ```Java
 Foo aFoo = ...;
@@ -705,8 +710,12 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
  * @return
  *     A description of the return value for this method, which
  *     may indicate whether or not the result can be {@code null}.
+ *
+ * @throws IOException
+ *     A description of the situation under which this exception 
+ *     is thrown.
  */
-public int method(String p1) { ... }
+public int method(String p1) throws SomeException { ... }
 ```
 
 ... or in this single-line example:
@@ -715,37 +724,39 @@ public int method(String p1) { ... }
 /** An especially short bit of Javadoc. */
 ```
 
-The basic form is always acceptable. The single-line form may be substituted when the entirety of the Javadoc block (including comment markers) can fit on a single line. Note that this only applies when there are no block tags such as `@return`.
+The basic form should always be acceptable. The single-line form may be substituted when the entirety of the Javadoc block (including comment markers) can fit on a single line. Note that this only applies when there are no block tags such as `@return`.
 
 #### 7.1.2 Paragraphs
-One blank line—that is, a line containing only the aligned leading asterisk (`*`)—appears between paragraphs, and before the group of block tags if present. Each paragraph but the first has `<p>` immediately before the first word, with no space after.
+One blank line &ndash; that is, a line containing only the aligned leading asterisk (`*`) &ndash; must appear between paragraphs, and before the group of block tags if present. Each paragraph but the first must have `<p>` immediately before the first word, with no space after.
 
 #### 7.1.3 Block tags
-Any of the standard "block tags" that are used appear in the order `@param`, `@return`, `@throws`, `@deprecated`, and these four types never appear with an empty description. When a block tag doesn't fit on a single line, continuation lines are indented four (or more) spaces from the position of the `@`.
+Any of the standard "block tags" that are used must appear in the order `@param`, `@return`, `@throws`, `@deprecated`, and these four types never appear with an empty description.
+
+When a block tag doesn't fit on a single line, continuation lines must be indented four (or more) spaces from the position of the `@`.
 
 ### 7.2 The summary fragment
-Each Javadoc block begins with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
+Each Javadoc block must begin with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
 
-This is a fragment—a noun phrase or verb phrase, not a complete sentence. It does **not** begin with `A {@code Foo} is a...`, or `This method returns...`, nor does it form a complete imperative sentence like `Save the record.`. However, the fragment is capitalized and punctuated as if it were a complete sentence.
+This is a fragment &ndash; a noun phrase or verb phrase, not a complete sentence. It must **not** begin with `A {@code Foo} is a...`, or `This method returns...`, nor should it form a complete imperative sentence like `Save the record.`. However, the fragment is capitalized and punctuated as if it were a complete sentence.
 
 > **Tip:** A common mistake is to write simple Javadoc in the form `/** @return the customer ID */`. This is incorrect, and should be changed to `/** Returns the customer ID. */`.
 
 ### 7.3 Where Javadoc is used
-At the _minimum_, Javadoc is present for every `public` class, and every `public` or `protected` member of such a class, with a few exceptions noted below.
+At the _minimum_, Javadoc must be present for every `public` class, and every `public` or `protected` member of such a class, with a few exceptions noted below.
 
 Additional Javadoc content may also be present, as explained in Section 7.3.4, [Non-required Javadoc](#734-non-required-javadoc).
 
 #### 7.3.1 Exception: self-explanatory methods
-Javadoc is optional for "simple, obvious" methods like `getFoo`, in cases where there _really and truly_ is nothing else worthwhile to say but "Returns the foo".
+Javadoc may be omitted for "simple, obvious" methods like `getFoo`, in cases where there _really and truly_ is nothing else worthwhile to say but "Returns the foo".
 
 > **Important:** it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named `getCanonicalName`, don't omit its documentation (with the rationale that it would say only `/** Returns the canonical name. */`) if a typical reader may have no idea what the term "canonical name" means!
 
 #### 7.3.2 Exception: overrides
-Javadoc is not always present on a method that overrides a supertype method.
+Javadoc may not always be present on a method that overrides a supertype method.
 
 #### 7.3.4 Non-required Javadoc
-Other classes and members have Javadoc _as needed or desired_.
+Other classes and members may have Javadoc _as needed or desired_.
 
-Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as Javadoc instead (using `/**`).
+Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment must be written as Javadoc instead (using `/**`).
 
 Non-required Javadoc is not strictly required to follow the formatting rules of Sections 7.1.2, 7.1.3, and 7.2, though it is of course recommended.
