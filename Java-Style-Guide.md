@@ -66,10 +66,9 @@ A source file must consist of, **in order**:
 3. Import statements
 4. Exactly one top-level class
 
-**Exactly one blank line** separates each section that is present.
+**Exactly one blank line** must separate each section that is present.
 
 ### 3.1 License and copyright information
-
 CDDL license and copyright information belongs here in the source file. 
 
 > **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a license and copyright header are **mandatory**, and must adhere to the CDDL.
@@ -108,7 +107,7 @@ To ensure compliance with the CDDL license, contributors must adhere to the foll
 - When modifying a source file, the line "Portions Copyright YEAR Wren Security." should be added below other copyright lines &ndash; unless a similar line already  exists, in which case it should be updated. YEAR must indicate the years of the contributions. For example, if the source file was first modified in 2017 and then again in 2019, the line should read "Portions Copyright 2017-2019 Wren Security."
 
 #### 3.1.3 Substantial Contributions from a Third Party
-Third-party organizations who are contributing a new feature and/or re-factoring an existing feature may use a CDDL copyright line that credits their own organization instead of the Wren Security organization, so long as the changes being contributed span three or more source files. Otherwise, single-file contributions should credit Wren Security as the copyright owner.
+Third-party organizations who are contributing a new feature and/or re-factoring an existing feature may use a CDDL copyright line that credits their own organization instead of the Wren Security organization, so long as the changes being contributed span three or more source files. Otherwise, single-file contributions should credit "Wren Security" as the copyright owner.
 
 This guideline helps to ensure that copyright headers do not become burdened with dozens of copyright claims for seemingly-minor changes.
 
@@ -130,7 +129,7 @@ Imports must be ordered as follows:
 
 If there are both static and non-static imports, a single blank line must separate the two blocks. There must be no other blank lines between import statements.
 
-Within each block the imported names must appear in ASCII sort order. (**Note:** this is not the same as the import _statements_ being in ASCII sort order, since '.' sorts before ';'.) (This reduces the incidence of merge conflicts in import statements).
+Within each block the imported names must appear in ASCII sort order. (**Note:** this is not the same as the import _statements_ being in ASCII sort order, since `.` sorts before `;`.) (This reduces the incidence of merge conflicts in import statements).
 
 > **Deviation Note:** This section of the style guide has additional clarifications not present in Google's Java Style Guide.
 
@@ -159,10 +158,10 @@ Braces must be used with `if`, `else`, `for`, `do` and `while` statements, even 
 #### 4.1.2 Nonempty blocks: K & R style
 Braces must follow the Kernighan and Ritchie style ("[Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)") for _nonempty_ blocks and block-like constructs:
 
-* No line break before the opening brace.
-* Line break after the opening brace.
-* Line break before the closing brace.
-* Line break after the closing brace, _only if_ that brace terminates a statement or terminates the body of a method, constructor, or _named_ class. For example, there is _no_ line break after the brace if it is followed by `else` or a comma.
+* No line break may appear before the opening brace.
+* A line break must appear after the opening brace.
+* A line break must appear before the closing brace.
+* A line break must appear after the closing brace, _only if_ that brace terminates a statement or terminates the body of a method, constructor, or _named_ class. For example, there is _no_ line break after the brace if it is followed by `else` or a comma.
 
 Examples:
 ```Java
@@ -255,7 +254,7 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
         * the two colons of a method reference (`::`)
         * an ampersand in a type bound (`<T extends Foo & Bar>`)
         * a pipe in a catch block (`catch (FooException | BarException e)`).
-2. When a line is broken at an _assignment_ operator the break may typically come _after_ the symbol, but either way is acceptable.
+2. When a line is broken at an _assignment_ operator the break typically may come _after_ the symbol, but either way is acceptable.
     *   This also applies to the "assignment-operator-like" colon in an enhanced `for` ("foreach") statement.
 3. A method or constructor name must stay attached to the open parenthesis (`(`) that follows it.
 4. A comma (`,`) must stay attached to the token that precedes it.
@@ -270,7 +269,7 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
         longExpressionInvolving(str);
 ```    
 
-> **Note:** The primary goal for line wrapping is to have clear code, _not necessarily_ code that fits in the smallest number of lines.
+> **Note:** The primary goal for line wrapping should be to have clear code, _not necessarily_ code that fits in the smallest number of lines.
 
 #### 4.5.2 Indent continuation lines at least +4 spaces
 When line-wrapping, each line after the first (each _continuation line_) must be indented at least +4 from the original line.
@@ -317,7 +316,7 @@ Beyond where required by the language or other style rules, and apart from liter
 8. _Optional_ just inside both braces of an array initializer
     *   `new int[] {5, 6}` and `new int[] { 5, 6 }` are both valid
 
-This rule is must not be interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
+This rule must not be interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
 
 > **Deviation Note:** This section of the style guide provides additional, minor clarifications but no substantial differences, when compared to Google's Java Style Guide. 
 
@@ -366,7 +365,7 @@ An enum class with no methods and no documentation on its constants may optional
 private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 ```
 
-Since enum classes _are classes_, all other rules for formatting classes must apply.
+Since enum classes _are classes_, all other rules for formatting classes apply.
 
 #### 4.8.2 Variable declarations
 ##### 4.8.2.1 One variable per declaration, per line
@@ -403,7 +402,7 @@ Examples:
 > **Deviation Note:** This section of the style guide is more permissive than the same section in Google's Java Style Guide. Multiple variables can share the same definition if the variable names appear on separate lines.
 
 ##### 4.8.2.2 Declared when needed
-Local variables must **not** be habitually declared at the start of their containing block or block-like construct. Instead, local variables should be declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations should have initializers, or should be initialized immediately after declaration.
+Local variables should **not** be habitually declared at the start of their containing block or block-like construct. Instead, local variables should be declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations should have initializers, or should be initialized immediately after declaration.
 
 One shortcoming of declaring local variables as they are needed, rather than at the top of a block, is that it can lead to longer methods. Consider that when variables are declared at the top, long methods would cause a developer to frequently have to scroll between the declaration of a variable and its use; that is not the case when variables are declared as they are needed. Nevertheless, strive to keep methods just as short and limited in complexity as you would if all variables _were_ declared at the start of the block.
 
@@ -455,6 +454,8 @@ When the elements of an array are split across multiple lines, the last element 
 As with any other block, the contents of a switch block must be indented +4 spaces.
 
 After a switch label, there must be a line break, and the indentation level must be increased +4, exactly as if a block were being opened. The following switch label must return to the previous indentation level, as if a block had been closed.
+
+> **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, four spaces instead of two spaces are used for indentation. This is to maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock.
 
 ##### 4.8.4.2 Fall-through: commented
 Within a `switch` block, each statement group must either terminate abruptly (with a `break`, `continue`, `return` or thrown exception), or must be marked with a comment to indicate that execution will or _might_ continue into the next statement group. Any comment that communicates the idea of fall-through is sufficient (typically `// fall through`). This special comment is not required in the last statement group of the switch block. 
@@ -529,7 +530,7 @@ Block comments must be indented at the same level as the surrounding code. They 
  * even do this */
 ```
 
-Comments must not be enclosed in boxes drawn with asterisks or other characters.
+Comments should not be enclosed in boxes drawn with asterisks or other characters.
 
 **Tip:** When writing multi-line comments, use the `/* ... */` style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in `// ...` style comment blocks.
 
@@ -572,7 +573,7 @@ Underscores may appear in JUnit _test_ method names to separate logical componen
 #### 5.2.4 Constant names
 Constant names must use `CONSTANT_CASE`: all uppercase letters, with each word separated from the next by a single underscore. But what _is_ a constant, exactly?
 
-Constants are static final fields whose contents are deeply immutable and whose methods have no detectable side effects. This includes primitives, Strings, immutable types, and immutable collections of immutable types. If any of the instance's observable state can change, it is not a constant. Merely _intending_ to never mutate the object is not enough. Examples:
+Constants should be `static final` fields whose contents are deeply immutable and whose methods have no detectable side effects. This includes primitives, Strings, immutable types, and immutable collections of immutable types. If any of the instance's observable state can change, it is not a constant. Merely _intending_ to never mutate the object is not enough. Examples:
 
 ```Java
 // Constants
@@ -596,7 +597,7 @@ static final Logger logger = Logger.getLogger(MyClass.getName());
 static final String\[\] nonEmptyArray = {"these", "can", "change"};
 ```
 
-These names are typically nouns or noun phrases.
+These names should typically be nouns or noun phrases.
 
 #### 5.2.5 Non-constant field names
 Non-constant field names (static or otherwise) must be written in [lowerCamelCase](#53-camel-case-defined).
