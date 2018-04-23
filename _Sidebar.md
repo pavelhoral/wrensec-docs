@@ -1,5 +1,6 @@
 - [Home](/WrenSecurity/wrensec-docs/wiki)
 - [License](/WrenSecurity/wrensec-docs/wiki/CDDL-1.1-License)
+- [Roadmap](/WrenSecurity/wrensec-docs/wiki/High-Level-Roadmap)
 - Contributing
   - [Guidelines](/WrenSecurity/wrensec-docs/wiki/Contributor-Guidelines)
   - [Code of Conduct](/WrenSecurity/wrensec-docs/wiki/Code-of-Conduct)
