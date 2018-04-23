@@ -20,12 +20,13 @@ The last stable major and minor release of each project that ForgeRock had publi
 
 At first, this includes just using the [wrensec-deps](/WrenSecurity/wrensec-deps) repository and installing the dependencies straight into the local Maven repository. Later, this must be accomplished by:
 
-1. Updating the POM files of each top-level project and its dependencies to source from Wren Security repositories and no longer source from `maven.forgerock.org`.
-2. Setting up a GPG whitelist and configuring builds to verify GPG signatures (to ensure all dependencies come from authentic sources).
-3. Building and publishing all of the dependencies of these projects to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
-4. Archiving ForgeRock binaries &ndash; from smaller projects that are not (yet) available to be built from source &ndash; in the ForgeRock archive of [the Wren Security BinTray repository](https://bintray.com/wrensecurity/forgerock-archive).
-5. GPG signing all binaries in all repositories.
-6. Tagging and releasing these versions on GitHub.
+1. Setting up `sustaining/` branches for these versions according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Contributor-Guidelines).
+2. Updating the POM files of each top-level project and its dependencies to source from Wren Security repositories and no longer source from `maven.forgerock.org`.
+3. Setting up a GPG whitelist and configuring builds to verify GPG signatures (to ensure all dependencies come from authentic sources).
+4. Building and publishing all of the dependencies of these projects to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
+5. Archiving ForgeRock binaries &ndash; from smaller projects that are not (yet) available to be built from source &ndash; in the ForgeRock archive of [the Wren Security BinTray repository](https://bintray.com/wrensecurity/forgerock-archive).
+6. GPG signing all binaries in all repositories.
+7. Tagging and releasing these versions on GitHub.
 
 ## Phase 1.5 Get All Subscription Maintenance Release Versions to a Buildable State _(PRs available; almost complete)_
 For some projects, Wren Security has access to the last available CDDL-licensed package from ForgeRock that was previously provided only to Backstage subscribers. During this phase, this code must be brought to a buildable state. This includes:
@@ -33,7 +34,7 @@ For some projects, Wren Security has access to the last available CDDL-licensed 
 * OpenAM 13.5.1
 
 This must be accomplished by:
-1. Committing the code to new branches in GIT source control (backstage downloads lack Git history).
+1. Committing the code to new branches in GIT source control (backstage downloads lack Git history), on new `sustaining/` branches according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Contributor-Guidelines).
 2. Applying all of the same project build changes from Phase 1 to POM files and dependencies introduced by the new code.
 3. Updating the GPG whitelist to include the dependencies needed by the new code.
 4. Building and publishing all of the dependencies of these projects to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
@@ -63,9 +64,10 @@ A backlog of issues and feature requests for the projects needs to be created. A
 
 ## Phase 5. Prepare Projects for Further Advancement _(Not started)_
 There are several steps to this stage:
-1. Licensed and legally problematic files need to be either replaced or removed. 
-2. Dependencies archived in the [the Wren Security BinTray repository](https://bintray.com/wrensecurity/forgerock-archive) for which no source code is available need to be cataloged, so that they can be replaced by new artifacts built from source in the not-to-distant future.
-3. The Maven group ids of all projects needs to be changed to `org.wrensecurity`.
+1. Security patches must be prepared for all know security defects in the release versions Wren Security maintains.
+2. Licensed and legally problematic files need to be either replaced or removed. 
+3. Dependencies archived in the [the Wren Security BinTray repository](https://bintray.com/wrensecurity/forgerock-archive) for which no source code is available need to be cataloged, so that they can be replaced by new artifacts built from source in the not-to-distant future.
+4. The Maven group ids of all projects needs to be changed to `org.wrensecurity`.
 
 ## Phase 6. Write New Project Documentation to Replace Original ForgeRock Documentation _(Not started)_
 Because all of ForgeRock's original documentation is licensed under the Creative Commons Non-Commercial, No Derivatives license (CC BY-NC-ND), we need to create our own from scratch. This includes references, tutorials, samples, and such.
