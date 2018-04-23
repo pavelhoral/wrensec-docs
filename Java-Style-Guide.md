@@ -258,7 +258,7 @@ Braces must be used with `if`, `else`, `for`, `do` and `while` statements, even 
 #### 4.1.2 Nonempty blocks: K & R style
 Braces must follow the Kernighan and Ritchie style ("[Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)") for _nonempty_ blocks and block-like constructs:
 
-* No line break may appear before the opening brace.
+* A line break must not appear before the opening brace.
 * A line break must appear after the opening brace.
 * A line break must appear before the closing brace.
 * A line break must appear after the closing brace, _only if_ that brace terminates a statement or terminates the body of a method, constructor, or _named_ class. For example, there is _no_ line break after the brace if it is followed by `else` or a comma.
