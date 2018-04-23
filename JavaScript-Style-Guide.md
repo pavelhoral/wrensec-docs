@@ -1,4 +1,4 @@
-Based on Google's [JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), which is licensed under the [CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/). 
+Based on Google's [JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html), which is licensed under the [CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/). _This style guide is provided under the same license._
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/3.0/88x31.png)](https://creativecommons.org/licenses/by/3.0/)
 
