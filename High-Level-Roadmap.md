@@ -20,7 +20,7 @@ The last stable major and minor release of each project that ForgeRock had publi
 
 At first, this includes just using the [wrensec-deps](/WrenSecurity/wrensec-deps) repository and installing the dependencies straight into the local Maven repository. Later, this must be accomplished by:
 
-1. Setting up `sustaining/` branches for these versions according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Contributor-Guidelines).
+1. Setting up `sustaining/` branches for these versions according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Versioning,-Branching,-and-Tagging#branching).
 2. Updating the POM files of each top-level project and its dependencies to source from Wren Security repositories and no longer source from `maven.forgerock.org`.
 3. Setting up a GPG whitelist and configuring builds to verify GPG signatures (to ensure all dependencies come from authentic sources).
 4. Building and publishing all of the dependencies of these projects to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
@@ -34,7 +34,7 @@ For some projects, Wren Security has access to the last available CDDL-licensed 
 * OpenAM 13.5.1
 
 This must be accomplished by:
-1. Committing the code to new branches in GIT source control (backstage downloads lack Git history), on new `sustaining/` branches according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Contributor-Guidelines).
+1. Committing the code to new branches in GIT source control (backstage downloads lack Git history), on new `sustaining/` branches according to Wren Security [branch conventions](/WrenSecurity/wrensec-docs/wiki/Versioning,-Branching,-and-Tagging#branching).
 2. Applying all of the same project build changes from Phase 1 to POM files and dependencies introduced by the new code.
 3. Updating the GPG whitelist to include the dependencies needed by the new code.
 4. Building and publishing all of the dependencies of these projects to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
