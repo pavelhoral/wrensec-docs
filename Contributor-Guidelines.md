@@ -14,25 +14,27 @@ To make sure that the build you have is functional, run the tests included in th
 
 ## Development
 ### Workflow
-1. **Check out the Latest Changes from the `master` Branch**
+1. **Check out the Latest Changes from the `master` Branch**  
 ```bash
 $ git checkout master
 # Assuming that `wren` is your remote name for Wren's copy of the project 
 $ git pull wren master
 ```
-2. **Create a Feature Branch**
+2. **Create a Feature Branch**  
 ```
 $ git checkout -b feature/my-awesome-improvement
 ```
-3. **Make and Commit Changes**
+3. **Make and Commit Changes**  
 Edit the source and commit the changes you make in logical chunks (see [Commit Guidelines](#commit-guidelines) below). All changes &ndash; including new features and bug fixes &ndash; must include tests that demonstrate that the changes work as expected, unless there is no practical way to test the issue being corrected.
-4. **Push to Your Fork**
+4. **Push to Your Fork**  
 In order to submit a pull request, you must push your local branch to your fork of the repository on GitHub.
 ```
 $ git push origin feature/my-awesome-improvement
 ```
-5. Submit a Pull Request
+5. **Submit a Pull Request**  
 Submit a pull request from your feature branch onto the target branch of the Wren Security project (See GitHub [Using Pull Requests](https://help.github.com/articles/about-pull-requests/ "Using Pull Requests")).
+6. **Respond to Pull Request Feedback on the Same Branch**  
+If and when maintainers ask for you to make changes to your work, you should be sure to make the requested changes on the _same feature branch_ that contains your original changes. Then, unless the maintainers have specifically asked you to do otherwise, push to _the same branch_ on your remote from which your pull request originates, and do _not_ create a new pull request for the new changes. Your existing pull request should automatically reflected the new changes you pushed.
 
 ### Commit Guidelines
 We encourage many smaller commits over one large commit. Small, focused commits make the review process easier and are more likely to be accepted. It is also important to summarize the changes made with brief commit messages. If a commit fixes a specific issue, it is also good to note that in the commit message.
