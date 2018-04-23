@@ -865,7 +865,7 @@ Non-required Javadoc is not strictly required to follow the formatting rules of 
 ### 7.4 Documenting Deprecation
 Deprecated methods, classes, or interfaces must be marked with `@Deprecated` annotations on the source element.
 
-Such elements must be accompanied by a Javadoc that includes a Javadoc `@deprecated` tag that includes simple, clear directions for the preferred replacement for the deprecated functionality.
+Such elements must be accompanied by a Javadoc that includes a Javadoc `@deprecated` tag that describes the preferred replacement for the deprecated functionality.
 
 > **Deviation Note:** This section of the style guide was adapted from Google's JavaScript Style Guide; no such section is present in Google's Java Style Guide.
 
