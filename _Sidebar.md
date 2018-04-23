@@ -1,5 +1,6 @@
 - [Home](/WrenSecurity/wrensec-docs/wiki)
     - [License](/WrenSecurity/wrensec-docs/wiki/CDDL-1.1-License)
+    - [Code of Conduct](/WrenSecurity/wrensec-docs/wiki/Contributor-Covenant-Code-of-Conduct)
     - [Coding Standards](/WrenSecurity/wrensec-docs/wiki/Coding-Standards-&amp;-Style-Guides)
         - [Java](/WrenSecurity/wrensec-docs/wiki/Java-Style-Guide)
         - [JavaScript](/WrenSecurity/wrensec-docs/wiki/JavaScript-Style-Guide)
