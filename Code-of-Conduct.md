@@ -1,10 +1,10 @@
 ## Our Pledge
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, gender identity and expression, level of experience,
-nationality, personal appearance, race, religion, or sexual identity and
-orientation.
+In the interest of fostering an open and welcoming environment, we as 
+contributors and maintainers of the Wren Security project pledge to making 
+participation in our project and our community a harassment-free experience for
+everyone, regardless of age, body size, disability, ethnicity, gender identity 
+and expression, level of experience, nationality, personal appearance, race, 
+religion, or sexual identity and orientation.
 
 ## Our Standards
 Examples of behavior that contributes to creating a positive environment
@@ -58,8 +58,9 @@ faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
 
 ## Attribution
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at [http://contributor-covenant.org/version/1/4][version]
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], 
+version 1.4, available at 
+[http://contributor-covenant.org/version/1/4][version]
 
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/
