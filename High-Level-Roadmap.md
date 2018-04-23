@@ -1,4 +1,4 @@
-This roadmap pertains to the entire Wren Security organization, and all projects we maintain.
+This roadmap pertains to the entire Wren Security organization, and covers all of the projects we maintain.
 
 ## Phase 0. Prepare Contributor Guidelines (Complete)
 The common documents for open-source projects need to be set up for both Wren Security in general, and for each project. This includes the Contributor Guidelines, Code of Conduct, READMEs, and others.
