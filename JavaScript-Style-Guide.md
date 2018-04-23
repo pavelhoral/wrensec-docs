@@ -183,7 +183,7 @@ for (let i = 0; i < foo.length; i++) bar(foo[i]);
 if (shortCondition()) return;
 ```
 
-#### 4.1.2 Nonempty blocks: K&R style
+#### 4.1.2 Nonempty blocks: K & R style
 Braces follow the Kernighan and Ritchie style ([Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)) for _nonempty_ blocks and block-like constructs:
 * A line break must not appear before the opening brace.
 * A line break must appear after the opening brace.
@@ -1002,7 +1002,7 @@ Example:
 function maybeDoSomething(required, optional = '', node = undefined) {}
 ```
 
-Use default parameters sparingly. Prefer destructuring (as in [5.3.7 Destructuring](#features-objects-destructuring)) to create readable APIs when there are more than a small handful of optional parameters that do not have a natural order.
+Use default parameters sparingly. Prefer destructuring (as in [5.3.7 Destructuring](#537-destructuring)) to create readable APIs when there are more than a small handful of optional parameters that do not have a natural order.
 
 > **Note:** Unlike Python's default parameters, it is okay to use initializers that return new mutable objects (such as `{}` or `[]`) because the initializer is evaluated each time the default value is used, so a single object won't be shared across invocations.
 
