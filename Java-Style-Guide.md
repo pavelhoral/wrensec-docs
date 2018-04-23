@@ -169,12 +169,12 @@ A source file must consist of, **in order**:
 **Exactly one blank line** must separate each section that is present.
 
 ### 3.1 License and copyright information
-CDDL license and copyright information belongs here in the source file. 
+[CDDL license](/WrenSecurity/wrensec-docs/wiki/CDDL-1.1-License) and copyright information belongs here in the source file. 
 
 > **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a license and copyright header are **mandatory**, and must adhere to the CDDL.
 
 #### 3.1.1 New Files
-All new Java source files added to Wren Security projects must have a CDDL license header, which includes a copyright line. The header must have the following format:
+All new Java source files added to Wren Security projects must have a [CDDL license](/WrenSecurity/wrensec-docs/wiki/CDDL-1.1-License) header, which includes a copyright line. The header must have the following format:
 
 ```Java
 /*
@@ -182,11 +182,11 @@ All new Java source files added to Wren Security projects must have a CDDL licen
  * Distribution License (the License). You may not use this file except in compliance with the
  * License.
  *
- * You can obtain a copy of the License at legal/CDDLv1.0.txt. See the License for the
+ * You can obtain a copy of the License at legal/CDDLv1.1.txt. See the License for the
  * specific language governing permission and limitations under the License.
  *
  * When distributing Covered Software, include this CDDL Header Notice in each file and include
- * the License file at legal/CDDLv1.0.txt. If applicable, add the following below the CDDL
+ * the License file at legal/CDDLv1.1.txt. If applicable, add the following below the CDDL
  * Header, with the fields enclosed by brackets [] replaced by your own identifying
  * information: "Portions copyright [year] [name of copyright owner]".
  *
@@ -197,7 +197,7 @@ All new Java source files added to Wren Security projects must have a CDDL licen
 The copyright line of a new source file should read "Copyright YEAR Wren Security. All rights reserved." `YEAR` must indicate the year that the file was first created.
 
 #### 3.1.2 Header Modifications in Existing Files
-To ensure compliance with the CDDL license, contributors must adhere to the following guidelines:
+To ensure compliance with [the CDDL license](/WrenSecurity/wrensec-docs/wiki/CDDL-1.1-License), contributors must adhere to the following guidelines:
 - Never remove a copyright line. Ever. No matter how small the original contribution was, the owner of the contribution must be acknowledged.
 
 - Older source files may have a CDDL header of a slightly different format than that shown above in [section 3.1.1](#311-new-files). You may update the format of the header in these files to match the new format, but *the copyright notices in the header &ndash; including the years of effect and name of each copyright owner &ndash; must be preserved.*.
