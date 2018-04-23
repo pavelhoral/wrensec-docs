@@ -728,8 +728,8 @@ Beginning with the prose form of the name:
 2. Divide this result into words, splitting on spaces and any remaining punctuation (typically hyphens).
     * _Recommended:_ if any word already has a conventional camel-case appearance in common usage, split this into its constituent parts (e.g., "AdWords" becomes "ad words"). Note that a word such as "iOS" is not really in camel case _per se_; it defies _any_ convention, so this recommendation does not apply.
 3. Now lowercase _everything_ (including acronyms), then uppercase only the first character of:
-    *   ... each word, to yield _upper camel case_, or
-    *   ... each word except the first, to yield _lower camel case_
+    *   … each word, to yield _upper camel case_, or
+    *   … each word except the first, to yield _lower camel case_
 4. Finally, join all the words into a single identifier.
 
 Note that the casing of the original words is almost entirely disregarded. Examples:
@@ -819,7 +819,7 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
 public int method(String p1) throw SomeException { ... }
 ```
 
-... or in this single-line example:
+… or in this single-line example:
 
 ```Java
 /** An especially short bit of Javadoc. */
