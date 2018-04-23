@@ -1,0 +1,1 @@
+Unless otherwise noted, all content is &copy; 2018 Wren Security, and licensed under the Creative Commons BY License.
