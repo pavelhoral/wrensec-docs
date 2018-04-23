@@ -1349,7 +1349,7 @@ Instead, you should write a Markdown list:
 ```
 
 ### 7.3 JSDoc tags
-Wren style allows a subset of JSDoc tags. See [9.1 JSDoc tag reference](#91-jsdoc-tag reference) for links to the complete list. Most tags must occupy their own line, with the tag at the beginning of the line.
+Wren style allows a subset of JSDoc tags. See [9.1 JSDoc tag reference](#91-jsdoc-tag-reference) for links to the complete list. Most tags must occupy their own line, with the tag at the beginning of the line.
 
 Illegal:
 ```js
