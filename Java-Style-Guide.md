@@ -795,7 +795,7 @@ It is **extremely rare** to override `Object.finalize`.
 ## 7. Javadoc
 ### 7.1 Formatting
 #### 7.1.1 General form
-The _basic_ formatting of Javadoc blocks is as seen in this example (additional empty lines added for emphasis):
+The _basic_ formatting of Javadoc blocks is as seen in this example (this example includes blank lines between sections):
 
 ```Java
 /**
