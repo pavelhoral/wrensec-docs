@@ -471,7 +471,7 @@ Since enum classes _are classes_, all other rules for formatting classes apply.
 ##### 4.8.2.1 One variable per declaration, per line
 Every variable declaration (field or local) must declare only one variable on the same line: declarations such as `int a, b;` are not used.
 
-**Exceptions:** Multiple _local_ variable may share the same declaration in the following circumstances: 
+**Exceptions:** Multiple _local_ variables may share the same declaration in the following circumstances: 
 - in the header of a `for` loop.
 - when the name of each variable is on its own line.
 
@@ -483,14 +483,24 @@ Examples:
 ```
 
 ```Java
-    // This is equally acceptable
-    int x = 1,
-        y = 2;
+    public void doSomething() {
+      // This is equally acceptable
+      int x = 1,
+          y = 2;
+    }
 ```
 
 ```Java
     // This is also acceptable
     for (int x = 1, y = 2; x < y; x++, y++) {
+    }
+```
+
+```Java
+    class MyClass {
+      // This is not acceptable: fields must not share a declaration
+      int x = 1,
+          y = 2;
     }
 ```
 
