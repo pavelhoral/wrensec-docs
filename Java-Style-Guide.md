@@ -504,7 +504,7 @@ Examples:
 ##### 4.8.2.2 Declared when needed
 Local variables should **not** be habitually declared at the start of their containing block or block-like construct. Instead, local variables should be declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations should have initializers, or should be initialized immediately after declaration.
 
-The ability to declare variables wherever they are needed within methods should not be used as an excuse for writing long methods. If sections of a method are being broken up into multi-line sections that are separated by comments that have to explain what the section does, this likely means that the method is too long and should be broken up into separate methods.
+The ability to declare variables wherever they are needed within methods should not be used as an excuse for writing long methods. If a method is being broken up into multi-line sections that are separated by comments that have to explain what the section does, this likely means that the method is too long and should be broken up into separate methods.
 
 > **Deviation Note:** This section of the style guide provides additional guidance about long methods than Google's Java Style Guide. 
 
