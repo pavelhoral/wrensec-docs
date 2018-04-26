@@ -334,7 +334,7 @@ Each Unicode code point counts as one character, even if its display width is gr
 2. `package` and `import` statements (see Sections 3.2 [Package statement](#32-package-statement) and 3.3 [Import statements](#33-import-statements)).
 3. Command lines or sample code in a comment that may be cut-and-pasted into a shell.
 
-> **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a 100-character limit is merely encouraged but not required, while the absolute limit has been raised to 120 characters. This is to maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock, especially given that the block indent for ours is [twice as long](#42-block-indentation-4-spaces) as Google's standard indent.
+> **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a 100-character limit is merely encouraged but not required, while the absolute limit has been raised to 120 characters. This is to maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock, especially given that the block indent for our project is [twice as long](#42-block-indentation-4-spaces) as Google's standard indent.
 
 ### 4.5 Line-wrapping
 > **Terminology Note:** When code that might otherwise legally occupy a single line is divided into multiple lines, this activity is called _line-wrapping_.
