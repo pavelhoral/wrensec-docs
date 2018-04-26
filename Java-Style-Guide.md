@@ -334,7 +334,7 @@ Each Unicode code point counts as one character, even if its display width is gr
 2. `package` and `import` statements (see Sections 3.2 [Package statement](#32-package-statement) and 3.3 [Import statements](#33-import-statements)).
 3. Command lines or sample code in a comment that may be cut-and-pasted into a shell.
 
-> **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a 100-character limit is merely encouraged but not required, while the absolute limit has been raised to 120 characters. This is maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock, especially given that the block indent for our is [twice as long](#42-block-indentation-4-spaces) as Google's standard indent.
+> **Deviation Note:** This section of the style guide notably differs from Google's Java Style Guide: in this style guide, a 100-character limit is merely encouraged but not required, while the absolute limit has been raised to 120 characters. This is to maintain consistency with the vast majority of code that Wren Security has inherited from ForgeRock, especially given that the block indent for our is [twice as long](#42-block-indentation-4-spaces) as Google's standard indent.
 
 ### 4.5 Line-wrapping
 > **Terminology Note:** When code that might otherwise legally occupy a single line is divided into multiple lines, this activity is called _line-wrapping_.
@@ -471,7 +471,7 @@ Since enum classes _are classes_, all other rules for formatting classes apply.
 ##### 4.8.2.1 One variable per declaration, per line
 Every variable declaration (field or local) must declare only one variable on the same line: declarations such as `int a, b;` are not used.
 
-**Exceptions:** Multiple variable may share the same declaration in the following circumstances: 
+**Exceptions:** Multiple _local_ variable may share the same declaration in the following circumstances: 
 - in the header of a `for` loop.
 - when the name of each variable is on its own line.
 
@@ -504,7 +504,7 @@ Examples:
 ##### 4.8.2.2 Declared when needed
 Local variables should **not** be habitually declared at the start of their containing block or block-like construct. Instead, local variables should be declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations should have initializers, or should be initialized immediately after declaration.
 
-One shortcoming of declaring local variables as they are needed, rather than at the top of a block, is that it can lead to longer methods. Consider that when variables are declared at the top, long methods would cause a developer to frequently have to scroll between the declaration of a variable and its use; that is not the case when variables are declared as they are needed. Nevertheless, strive to keep methods just as short and limited in complexity as you would if all variables _were_ declared at the start of the block.
+The ability to declare variables wherever they are needed within methods should not be used as an excuse for writing long methods. If sections of a method are being broken up into multiple lines at a time, separated by comments to explain what the section does, this likely means that the method is too long and should be broken up into separate methods.
 
 > **Deviation Note:** This section of the style guide provides additional guidance about long methods than Google's Java Style Guide. 
 
@@ -795,7 +795,7 @@ It is **extremely rare** to override `Object.finalize`.
 ## 7. Javadoc
 ### 7.1 Formatting
 #### 7.1.1 General form
-The _basic_ formatting of Javadoc blocks is as seen in this example:
+The _basic_ formatting of Javadoc blocks is as seen in this example (additional empty lines added for emphasis):
 
 ```Java
 /**
@@ -807,6 +807,9 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
  * @param p1
  *     A description of the first parameter, which may indicate
  *     whether or not the parameter can be {@code null}.
+ * @param p2
+ *     A description of the first parameter, which may indicate
+ *     whether or not the parameter can be {@code null}.
  *
  * @return
  *     A description of the return value for this method, which
@@ -816,7 +819,7 @@ The _basic_ formatting of Javadoc blocks is as seen in this example:
  *     A description of the situation under which this exception 
  *     is thrown.
  */
-public int method(String p1) throw SomeException { ... }
+public int method(final String p1, final String p2) throws SomeException { ... }
 ```
 
 … or in this single-line example:
@@ -827,6 +830,8 @@ public int method(String p1) throw SomeException { ... }
 
 The basic form should always be acceptable. The single-line form may be substituted when the entirety of the Javadoc block (including comment markers) can fit on a single line. Note that this only applies when there are no block tags such as `@return`.
 
+> **Deviation Note:** This style guide clarifies that the basic form should include block tags; not just a summary line.
+
 #### 7.1.2 Paragraphs
 One blank line &ndash; that is, a line containing only the aligned leading asterisk (`*`) &ndash; must appear between paragraphs, and before the group of block tags if present. Each paragraph but the first must have `<p>` immediately before the first word, with no space after.
 
@@ -834,6 +839,10 @@ One blank line &ndash; that is, a line containing only the aligned leading aster
 Any of the standard "block tags" that are used must appear in the order `@param`, `@return`, `@throws`, `@deprecated`, and these four types never appear with an empty description.
 
 When a block tag doesn't fit on a single line, continuation lines must be indented four (or more) spaces from the position of the `@`.
+
+Empty lines between block tags must not be required, but may be used at the author's discretion to enhance readability by separating each section of tags from each other when descriptions are lengthy.
+
+> **Deviation Note:** This style guide clarifies how spaces between sections of block tags are handled. They are neither encouraged nor discouraged.
 
 ### 7.2 The summary fragment
 Each Javadoc block must begin with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
