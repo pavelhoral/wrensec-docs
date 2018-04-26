@@ -818,7 +818,7 @@ The _basic_ formatting of Javadoc blocks is as seen in this example (this exampl
  *     A description of the first parameter, which may indicate
  *     whether or not the parameter can be {@code null}.
  * @param p2
- *     A description of the first parameter, which may indicate
+ *     A description of the second parameter, which may indicate
  *     whether or not the parameter can be {@code null}.
  *
  * @return
