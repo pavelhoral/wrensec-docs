@@ -56,11 +56,11 @@ This must be accomplished by:
 ## Phase 3. Build Up Backlog _(On-going)_
 A backlog of issues and feature requests for the projects needs to be created. All the issues and requests that people keep in different places should be submitted as issues to the GitHub projects, so that they can be worked on publicly.
 
-## Phase 4. Set up Projects for Continuous Integration _(Not started)_
-- Automatic CI builds triggered from Wren Security project branches must be setup in order to ensure that breaking changes are caught immediately.
-- The results of builds must be integrated into the pull request process to ensure that maintainers are merging seemingly-stable code into `master` and release branches. 
-- Automatic code style checks are added during the CI and/or pull request process to enforce project style guidelines without maintainers having to manually provide style critiques in pull requests.
-- Builds must be configured to publish `SNAPSHOT` and release artifacts to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/).
+## Phase 4. Set up Projects for Continuous Integration _(50% Complete)_
+- Automatic CI builds triggered from Wren Security project branches must be setup in order to ensure that breaking changes are caught immediately. _(Done)_
+- The results of builds must be integrated into the pull request process to ensure that maintainers are merging seemingly-stable code into `master` and release branches.  _(Done)_
+- Automatic code style checks are added during the CI and/or pull request process to enforce project style guidelines without maintainers having to manually provide style critiques in pull requests. _(Not Started)_
+- Builds must be configured to publish `SNAPSHOT` and release artifacts to the [Wren Security JFrog repository](https://wrensecurity.jfrog.io/wrensecurity/webapp/). _(Not Started)_
 
 ## Phase 5. Prepare Projects for Further Advancement _(Not started)_
 There are several steps to this stage:
